@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Login from './login';
 import Chat from './chat';
 import client from './feathers';
+
+import AppHeader from "./components/AppHeader"
+import Home from "./pages/home"
 
 class Application extends Component {
   constructor(props) {
@@ -62,10 +65,18 @@ class Application extends Component {
         <h1>Loading...</h1>
       </main>;
     } else if(this.state.login) {
-      return <Chat messages={this.state.messages} users={this.state.users} />
+      return (
+        <Fragment>
+          <AppHeader />
+          <main >
+            <Home />
+          </main>
+        </Fragment>
+        );
     }
-
     return <Login />;
+    
+    
   }
 }
 
